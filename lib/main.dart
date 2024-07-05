@@ -43,16 +43,18 @@ class _MyResumePageState extends State<MyResumePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF47C42),
+      backgroundColor: Color(0xFFF47C42), // Extracted color
       appBar: AppBar(
-        backgroundColor: Color(0xFFF47C42),
+        backgroundColor: Color(0xFFF47C42), // Matching color for the header
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              'assets/image.png', // Add your image here
-              height: 40,
+              'assets/navigatorbarimage.png', // Add your image here
+              height: 60,
+              width: 200, // Set the desired width
+              fit: BoxFit.contain, // Ensure the image is contained within the specified width
             ),
             Row(
               children: [
