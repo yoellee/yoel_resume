@@ -4,7 +4,7 @@ class SkillsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFFF8B88B), // Background color for even section
+      color: Color(0xFF8ED6E5), // Background color for even section
       padding: EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
