@@ -6,6 +6,7 @@ import 'sections/references_section.dart';
 import 'sections/skills_section.dart';
 import 'sections/projects_section.dart';
 import 'sections/volunteer_experience_section.dart';
+import 'sections/intro_section.dart';
 
 void main() {
   runApp(MyResumeApp());
@@ -18,6 +19,19 @@ class MyResumeApp extends StatelessWidget {
       title: 'My Resume',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          headlineLarge: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontSize: 55,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          bodyLarge: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        ),
       ),
       home: MyResumePage(),
     );
@@ -43,48 +57,51 @@ class _MyResumePageState extends State<MyResumePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF47C42), // Extracted color
+      backgroundColor: Color(0xFFF47C42),
       appBar: AppBar(
-        backgroundColor: Color(0xFFF47C42), // Matching color for the header
+        backgroundColor: Color(0xFFF47C42),
         elevation: 0,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              'assets/navigatorbarimage.png', // Add your image here
+              'assets/navigatorbarimage.png',
               height: 60,
-              width: 200, // Set the desired width
-              fit: BoxFit.contain, // Ensure the image is contained within the specified width
+              width: 200,
+              fit: BoxFit.contain,
             ),
             Row(
               children: [
-                _buildNavButton('Education', 0),
-                _buildNavButton('Experience', 1),
-                _buildNavButton('References', 2),
-                _buildNavButton('Skills', 3),
-                _buildNavButton('Projects', 4),
-                _buildNavButton('Volunteer', 5),
+                _buildNavButton('Intro', 0),
+                _buildNavButton('Education', 1),
+                _buildNavButton('Experience', 2),
+                _buildNavButton('References', 3),
+                _buildNavButton('Skills', 4),
+                _buildNavButton('Projects', 5),
+                _buildNavButton('Volunteer', 6),
               ],
             ),
           ],
         ),
       ),
       body: ScrollablePositionedList.builder(
-        itemCount: 6, // Including Volunteer Experience
+        itemCount: 7,
         itemScrollController: _scrollController,
         itemBuilder: (context, index) {
           switch (index) {
             case 0:
-              return EducationSection();
+              return IntroSection();
             case 1:
-              return ExperienceSection();
+              return EducationSection();
             case 2:
-              return ReferencesSection();
+              return ExperienceSection();
             case 3:
-              return SkillsSection();
+              return ReferencesSection();
             case 4:
-              return ProjectsSection();
+              return SkillsSection();
             case 5:
+              return ProjectsSection();
+            case 6:
               return VolunteerExperienceSection();
             default:
               return Container();
