@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EducationSection extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class EducationSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Education',
+            AppLocalizations.of(context)!.education,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: 40), // Adjust space between title and content
@@ -18,21 +19,21 @@ class EducationSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _buildEducationItem(
-                'Korea National Open University',
-                'Bachelor of Science in Advanced Engineering, AI Major',
-                'Currently Enrolled',
+                AppLocalizations.of(context)!.knou,
+                AppLocalizations.of(context)!.knouDegree,
+                AppLocalizations.of(context)!.knouStatus,
               ),
               SizedBox(width: 40), // Adjust space between items
               _buildEducationItem(
-                'Sungkonghoe University Graduate School',
-                'Master of Practical Women\'s Studies, NGO Department',
-                'Graduation: Feb 2022',
+                AppLocalizations.of(context)!.sku,
+                AppLocalizations.of(context)!.skuDegree,
+                AppLocalizations.of(context)!.skuStatus,
               ),
               SizedBox(width: 40), // Adjust space between items
               _buildEducationItem(
-                'Seoul Theological University',
-                'Bachelor of Church Music, Organ Major',
-                'Graduation: Feb 2015',
+                AppLocalizations.of(context)!.stu,
+                AppLocalizations.of(context)!.stuDegree,
+                AppLocalizations.of(context)!.stuStatus,
               ),
             ],
           ),

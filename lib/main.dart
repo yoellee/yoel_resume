@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'sections/education_section.dart';
 import 'sections/experience_section.dart';
 import 'sections/references_section.dart';
@@ -12,11 +14,34 @@ void main() {
   runApp(MyResumeApp());
 }
 
-class MyResumeApp extends StatelessWidget {
+class MyResumeApp extends StatefulWidget {
+  @override
+  _MyResumeAppState createState() => _MyResumeAppState();
+}
+
+class _MyResumeAppState extends State<MyResumeApp> {
+  Locale _locale = Locale('en');
+
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Resume',
+      locale: _locale,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'),
+        Locale('ko'),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: TextTheme(
@@ -33,12 +58,16 @@ class MyResumeApp extends StatelessWidget {
           ),
         ),
       ),
-      home: MyResumePage(),
+      home: MyResumePage(changeLanguage: _changeLanguage),
     );
   }
 }
 
 class MyResumePage extends StatefulWidget {
+  final Function(Locale) changeLanguage;
+
+  MyResumePage({required this.changeLanguage});
+
   @override
   _MyResumePageState createState() => _MyResumePageState();
 }
@@ -72,13 +101,25 @@ class _MyResumePageState extends State<MyResumePage> {
             ),
             Row(
               children: [
-                _buildNavButton('Intro', 0),
-                _buildNavButton('Education', 1),
-                _buildNavButton('Experience', 2),
-                _buildNavButton('References', 3),
-                _buildNavButton('Skills', 4),
-                _buildNavButton('Projects', 5),
-                _buildNavButton('Volunteer', 6),
+                _buildNavButton(AppLocalizations.of(context)!.intro, 0),
+                _buildNavButton(AppLocalizations.of(context)!.education, 1),
+                _buildNavButton(AppLocalizations.of(context)!.experience, 2),
+                _buildNavButton(AppLocalizations.of(context)!.references, 3),
+                _buildNavButton(AppLocalizations.of(context)!.skills, 4),
+                _buildNavButton(AppLocalizations.of(context)!.projects, 5),
+                _buildNavButton(AppLocalizations.of(context)!.volunteer, 6),
+              ],
+            ),
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () => widget.changeLanguage(Locale('en')),
+                  child: Text('English'),
+                ),
+                TextButton(
+                  onPressed: () => widget.changeLanguage(Locale('ko')),
+                  child: Text('한국어'),
+                ),
               ],
             ),
           ],

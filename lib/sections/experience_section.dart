@@ -1,99 +1,90 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ExperienceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xFF8ED6E5), // Background color for even section
-      padding: EdgeInsets.all(20),
+      color: Color(0xFF8ED6E5), // Background color
+      padding: EdgeInsets.all(40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Professional Experience',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
+            AppLocalizations.of(context)!.experience,
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
-          SizedBox(height: 20),
-          ExperienceItem(
-            position: 'RPA Developer',
-            company: 'Ainno, Seoul, Korea',
-            duration: 'October 2023 - April 2024',
-            details: [
-              'Developed and maintained RPA (Robotic Process Automation) solutions.',
-              'Ensured continuous operation and maintenance of RPA systems.',
+          SizedBox(height: 40), // Adjust space between title and content
+          _buildExperienceItem(
+            AppLocalizations.of(context)!.rpaDeveloper,
+            AppLocalizations.of(context)!.ainno,
+            AppLocalizations.of(context)!.ainnoPeriod,
+            [
+              AppLocalizations.of(context)!.rpaResponsibility1,
+              AppLocalizations.of(context)!.rpaLocation1,
             ],
           ),
-          ExperienceItem(
-            position: 'RPA Developer',
-            company: 'SNJTest, Seoul, Korea',
-            duration: 'April 2023 - July 2023',
-            details: [
-              'Developed and maintained RPA (Robotic Process Automation) solutions.',
-              'Ensured continuous operation and maintenance of RPA systems.',
+          SizedBox(height: 20), // Adjust space between items
+          _buildExperienceItem(
+            AppLocalizations.of(context)!.rpaDeveloper,
+            AppLocalizations.of(context)!.snjtest,
+            AppLocalizations.of(context)!.snjtestPeriod,
+            [
+              AppLocalizations.of(context)!.rpaResponsibility1,
+              AppLocalizations.of(context)!.rpaLocation2,
             ],
           ),
-          ExperienceItem(
-            position: 'RPA Developer',
-            company: 'Gritstandard, Seoul, Korea',
-            duration: 'December 2022 - April 2023',
-            details: [
-              'Developed and maintained RPA (Robotic Process Automation) solutions.',
-              'Ensured continuous operation and maintenance of RPA systems.',
+          SizedBox(height: 20), // Adjust space between items
+          _buildExperienceItem(
+            AppLocalizations.of(context)!.rpaDeveloper,
+            AppLocalizations.of(context)!.gritstandard,
+            AppLocalizations.of(context)!.gritstandardPeriod,
+            [
+              AppLocalizations.of(context)!.rpaResponsibility1,
+              AppLocalizations.of(context)!.rpaLocation3,
             ],
           ),
         ],
       ),
     );
   }
-}
 
-class ExperienceItem extends StatelessWidget {
-  final String position;
-  final String company;
-  final String duration;
-  final List<String> details;
-
-  ExperienceItem({
-    required this.position,
-    required this.company,
-    required this.duration,
-    required this.details,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+  Widget _buildExperienceItem(String title, String company, String period, List<String> responsibilities) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          company,
+          style: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontSize: 14,
+          ),
+        ),
+        Text(
+          period,
+          style: TextStyle(
+            fontFamily: 'PlayfairDisplay',
+            fontSize: 12,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+        for (var responsibility in responsibilities)
           Text(
-            position,
+            responsibility,
             style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
+              fontFamily: 'PlayfairDisplay',
+              fontSize: 14,
             ),
           ),
-          Text(
-            company,
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.grey[700],
-            ),
-          ),
-          Text(
-            duration,
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.grey[600],
-            ),
-          ),
-          ...details.map((detail) => Text('• $detail')).toList(),
-        ],
-      ),
+      ],
     );
   }
 }

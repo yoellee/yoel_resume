@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProjectsSection extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class ProjectsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Projects',
+            AppLocalizations.of(context)!.projects,
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           SizedBox(height: 40), // Space between title and content
@@ -19,15 +20,15 @@ class ProjectsSection extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildProjectItem(
-                  'RPA Automation for Korea Investment & Securities',
-                  'Led automation project, enhancing workflows and reducing manual tasks.',
+                  AppLocalizations.of(context)!.project1Title,
+                  AppLocalizations.of(context)!.project1Description,
                 ),
               ),
               SizedBox(width: 40), // Space between columns
               Expanded(
                 child: _buildProjectItem(
-                  'RPA Development & Maintenance for Korea Investment & Securities',
-                  'Managed multiple RPA projects, improving efficiency and reducing manual efforts.',
+                  AppLocalizations.of(context)!.project2Title,
+                  AppLocalizations.of(context)!.project2Description,
                 ),
               ),
             ],
@@ -38,15 +39,15 @@ class ProjectsSection extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildProjectItem(
-                  'Logistics Export Deadline Automation',
-                  'Automated export deadline extensions, enhancing compliance and efficiency.',
+                  AppLocalizations.of(context)!.project3Title,
+                  AppLocalizations.of(context)!.project3Description,
                 ),
               ),
               SizedBox(width: 40), // Space between columns
               Expanded(
                 child: _buildProjectItem(
-                  'Import Manifest Management Automation',
-                  'Streamlined import management, saving time and reducing errors.',
+                  AppLocalizations.of(context)!.project4Title,
+                  AppLocalizations.of(context)!.project4Description,
                 ),
               ),
             ],
@@ -57,15 +58,15 @@ class ProjectsSection extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildProjectItem(
-                  'Automated Shipment Tracking Service',
-                  'Developed tracking system, improving operational efficiency and accuracy.',
+                  AppLocalizations.of(context)!.project5Title,
+                  AppLocalizations.of(context)!.project5Description,
                 ),
               ),
               SizedBox(width: 40), // Space between columns
               Expanded(
                 child: _buildProjectItem(
-                  'Tracking Service Technology Analysis',
-                  'Conducted analysis of tracking technologies, improving service strategies.',
+                  AppLocalizations.of(context)!.project6Title,
+                  AppLocalizations.of(context)!.project6Description,
                 ),
               ),
             ],
@@ -76,8 +77,8 @@ class ProjectsSection extends StatelessWidget {
             children: [
               Expanded(
                 child: _buildProjectItem(
-                  'Shipping Line Schedule Automation',
-                  'Automated scheduling, enhancing logistics efficiency and accuracy.',
+                  AppLocalizations.of(context)!.project7Title,
+                  AppLocalizations.of(context)!.project7Description,
                 ),
               ),
               SizedBox(width: 40), // Space between columns
